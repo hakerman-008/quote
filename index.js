@@ -1,3 +1,4 @@
+
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
@@ -30,7 +31,9 @@ function sendNextVideo(res) {
         videoIndex = (videoIndex + 1) % allVideos.length; 
     });
 }
-
+app.get('/', (req, res) => {
+  res.send('get random quotes');
+});
 app.get('/kshitiz', (req, res) => {
     if (allVideos.length === 0) {
         fs.readdir(path.join('.', 'videos'), (err, files) => {
